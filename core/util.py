@@ -1,14 +1,7 @@
-'''
-Created on Mar 31, 2013
-
-@author: neymellosampaio
-'''
-
 class Util(object):
     '''
     Class to handle file
     '''
-
 
     def __init__(self):
         '''
@@ -38,5 +31,5 @@ class Util(object):
         return result
         
 if __name__ == '__main__':
-    Util().getFileContent("/Users/neymellosampaio/Documents/workspace/clusterator/examples/TEST.DAT")
+    print Util().getFileContent("/Users/neymellosampaio/Documents/workspace/clusterator/examples/TEST.DAT")
     
