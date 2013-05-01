@@ -21,7 +21,7 @@ class Similarity(object):
 if __name__ == '__main__':
     from util import Util
     from tokenator import Tokenator
-    a = Util().getFileContent("/Users/neymellosampaio/Documents/workspace/clusterator/examples/TEST_light.DAT")
+    a = Util().getFileContent("../examples/TEST_light.DAT")
     
     struct = Tokenator().createDocWordsStruct(a)
     
