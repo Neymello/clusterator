@@ -31,5 +31,5 @@ class Util(object):
         return result
         
 if __name__ == '__main__':
-    print Util().getFileContent("/Users/neymellosampaio/Documents/workspace/clusterator/examples/TEST.DAT")
+    print Util().getFileContent("../examples/TEST.DAT")
     
