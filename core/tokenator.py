@@ -4,6 +4,8 @@ Created on Mar 30, 2013
 @author: neymellosampaio
 '''
 
+
+
 class Tokenator(object):
     '''
     Class to handle tokens.
@@ -37,3 +39,6 @@ class Tokenator(object):
                 result[doc][word] +=1 ;
         
         return result
+        
+    
+    
