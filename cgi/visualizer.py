@@ -13,19 +13,25 @@ fs = cgi.FieldStorage()
 print("Content-Type: text/html\n\n")
 print()
 
+scriptPath = "/var/www/clusterator/core/"
+sys.path.append(scriptPath)
 
-# A nested FieldStorage instance holds the file
-fileitem = fs['file']
+from util import Util
+from tokenator import Tokenator
+docWordsStruct = Util().getFileContent("/var/www/clusterator/examples/TEST.DAT")
 
-# Test if the file was uploaded
-if fileitem.filename:
-   
-   # strip leading path from file name to avoid directory traversal attacks
-   fn = os.path.basename(fileitem.filename)
+matrix = Tokenator().createTermFrequencyMatrix(docWordsStruct);
 
-   open('/var/www/clusterator/files/' + fn, 'wb').write(fileitem.file.read())
-   message = 'The file "' + fn + '" was uploaded successfully'
+html = "<table border='1'><tbody>"
 
+for doc in matrix:
+    html = html + "<tr><td>"+doc+"</td>"
 
+    for word in matrix[doc]:
+        html = html + "<td>" + word + ":" + str(matrix[doc][word])  +"</td>"
+
+    html = html + "</tr>"
+
+html = html + "</tbody></table>"
 #print(json.dumps(message,indent=1))
-print(message)
+print(html)
