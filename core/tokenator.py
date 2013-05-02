@@ -24,5 +24,16 @@ class Tokenator(object):
 
         return result
     
-if __name__ == '__main__':
-    Tokenator().createTokens("ney mello    sampaio")
+    def createTermFrequencyMatrix(self, docWordsStruct ):
+        result = dict()
+        
+        for doc in docWordsStruct:
+            result[doc] = dict()
+            
+            for word in docWordsStruct[doc]:
+                if( word not in result[doc]):
+                    result[doc][word] = 0
+                
+                result[doc][word] +=1 ;
+        
+        return result

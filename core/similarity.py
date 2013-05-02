@@ -18,11 +18,3 @@ class Similarity(object):
                 
         return similarity
 
-if __name__ == '__main__':
-    from util import Util
-    from tokenator import Tokenator
-    a = Util().getFileContent("../examples/TEST_light.DAT")
-    
-    struct = Tokenator().createDocWordsStruct(a)
-    
-    print Similarity().calculateSimiliarity(struct,"TERM", "ABOUT")

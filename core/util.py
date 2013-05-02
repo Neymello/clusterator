@@ -29,7 +29,3 @@ class Util(object):
                     result[lastDocId] += Tokenator().createTokens(textLine) 
                 
         return result
-        
-if __name__ == '__main__':
-    print Util().getFileContent("../examples/TEST.DAT")
-    
