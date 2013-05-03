@@ -4,25 +4,27 @@
 CGI
 
 """
-import cgi
+import cgitb,cgi
 import json,sys,os
+
+cgitb.enable()
 
 fs = cgi.FieldStorage()
 
 #print("Content-Type: application/json\n\n")
 print("Content-Type: text/html\n\n")
-print()
+print
 
 scriptPath = "/var/www/clusterator/core/"
 sys.path.append(scriptPath)
 
 from util import Util
 from tokenator import Tokenator
-docWordsStruct = Util().getFileContent("/var/www/clusterator/examples/TEST.DAT")
+docWordsStruct = Util().getFileContent("../examples/TEST.DAT")
 
 matrix = Tokenator().createTermFrequencyMatrix(docWordsStruct);
 
-html = "<table border='1'><tbody>"
+html = "<table border='1'><thead><tr><th>DOC ID</th><th>TERMS</th></tr></thead><tbody>"
 
 for doc in matrix:
     html = html + "<tr><td>"+doc+"</td>"
