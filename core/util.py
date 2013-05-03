@@ -25,10 +25,11 @@ class Util(object):
                 if (line < len(linesArray)-1 and linesArray[line+1].strip() == "" and len(textLine) < 10 ):
                     lastDocId = str(counter) + "_" + textLine
                     result[lastDocId] = []
+                    counter += 1
                     
                 elif (lastDocId != ""):
                     result[lastDocId] += Tokenator().createTokens(textLine) 
-            counter += 1
+            
         return result
 
 if __name__ == '__main__':
