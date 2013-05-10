@@ -11,5 +11,3 @@ José Silveira Neto, Lucas Sá, and Ney Mello
 
 - pip install networkx
 - pip install matplotlib
-or 
-- easy_install -m matplotlib
