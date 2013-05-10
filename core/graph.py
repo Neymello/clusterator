@@ -1,4 +1,6 @@
 from pprint import pprint
+import networkx as nx
+import matplotlib.pyplot plt
 
 class Graph(object):
 
@@ -12,6 +14,11 @@ class Graph(object):
                     self.graph[term_a] = tmp
             if( not self.graph.has_key(term_a)):
                 self.graph[term_a] = []
+
+        self.nx_graph = nx.to_networkx_graph(self.graph)
+
+    def cliques(self):
+        return nx.algorithms.clique.find_cliques(self.nx_graph)
 
 
 if __name__ == '__main__':
@@ -27,7 +34,11 @@ if __name__ == '__main__':
     ttmatrix = Similarity.calculateSimilarityMatrix(tfm)
     
     g = Graph(ttmatrix)
-    pprint(g.graph)
+    
+    pprint(g)
+
+    print '### Cliques ###'
+    pprint(g.cliques())
 #    {'Term 1': ['Term 3', 'Term 4', 'Term 5', 'Term 6'],
 #     'Term 2': ['Term 4', 'Term 6', 'Term 8'],
 #     'Term 3': ['Term 1', 'Term 4', 'Term 6'],
