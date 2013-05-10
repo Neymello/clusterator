@@ -1,7 +1,7 @@
 import tokenizer
 
 
-def getFileContent(self, filePath):
+def getFileContent(filePath):
     result = {}
     fileObj = open(filePath, 'r')
 

@@ -1,4 +1,4 @@
-def createTokens(self, string):
+def createTokens(string):
     result = []
 
     for word in string.split(" "):
@@ -8,7 +8,7 @@ def createTokens(self, string):
     return result
 
 
-def createTermFrequencyMatrix(self, docWordsStruct):
+def createTermFrequencyMatrix(docWordsStruct):
     result = dict()
 
     for doc in docWordsStruct:
