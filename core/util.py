@@ -1,4 +1,4 @@
-import tokenator
+import tokenizer
 
 
 def getFileContent(self, filePath):
@@ -20,7 +20,7 @@ def getFileContent(self, filePath):
                 counter += 1
 
             elif (lastDocId != ""):
-                result[lastDocId] += tokenator.createTokens(textLine)
+                result[lastDocId] += tokenizer.createTokens(textLine)
 
     return result
 
