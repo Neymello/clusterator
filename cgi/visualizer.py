@@ -18,11 +18,11 @@ print
 scriptPath = "/var/www/clusterator/core/"
 sys.path.append(scriptPath)
 
-from util import Util
-from tokenator import Tokenator
-docWordsStruct = Util().getFileContent("../examples/TEST.DAT")
+import util
+import tokenator
+docWordsStruct = util.getFileContent("../examples/TEST.DAT")
 
-matrix = Tokenator().createTermFrequencyMatrix(docWordsStruct);
+matrix = tokenator.createTermFrequencyMatrix(docWordsStruct);
 
 html = "<table border='1'><thead><tr><th>DOC ID</th><th>TERMS</th></tr></thead><tbody>"
 

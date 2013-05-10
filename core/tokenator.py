@@ -1,44 +1,23 @@
-'''
-Created on Mar 30, 2013
+def createTokens(self, string):
+    result = []
 
-@author: neymellosampaio
-'''
+    for word in string.split(" "):
+        if(word.strip() != ""):
+            result.append(word.strip())
 
-
-
-class Tokenator(object):
-    '''
-    Class to handle tokens.
-    '''
+    return result
 
 
-    def __init__(self):
-        '''
-        Constructor 
-        '''
-        
-    def createTokens(self,string):
-        result = []
-        
-        for word in string.split(" "):
-            if(word.strip() != ""):
-                result.append(word.strip())
+def createTermFrequencyMatrix(self, docWordsStruct):
+    result = dict()
 
-        return result
-    
-    def createTermFrequencyMatrix(self, docWordsStruct ):
-        result = dict()
-        
-        for doc in docWordsStruct:
-            result[doc] = dict()
-            
-            for word in docWordsStruct[doc]:
-                if( word not in result[doc]):
-                    result[doc][word] = 0
-                
-                result[doc][word] +=1 ;
-        
-        return result
-        
-    
-    
+    for doc in docWordsStruct:
+        result[doc] = dict()
+
+        for word in docWordsStruct[doc]:
+            if(word not in result[doc]):
+                result[doc][word] = 0
+
+            result[doc][word] += 1
+
+    return result

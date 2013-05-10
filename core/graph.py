@@ -2,8 +2,8 @@ from pprint import pprint
 import networkx as nx
 import matplotlib.pyplot plt
 
-class Graph(object):
 
+class Graph(object):
     def __init__(self, term_term_matrix, threshold=10):
         self.graph = {}
         for term_a in term_term_matrix:
@@ -12,7 +12,8 @@ class Graph(object):
                     tmp = self.graph.get(term_a, [])
                     tmp.append(term_b)
                     self.graph[term_a] = tmp
-            if( not self.graph.has_key(term_a)):
+
+            if(term_a not in self.graph):
                 self.graph[term_a] = []
 
         self.nx_graph = nx.to_networkx_graph(self.graph)
@@ -30,11 +31,12 @@ if __name__ == '__main__':
         "Item 4": {"Term 2":1, "Term 4":3, "Term 7":2},
         "Item 5": {"Term 1":2, "Term 2":2, "Term 3":2, "Term 4":3, "Term 5":1, "Term 6":4, "Term 8":2}
     }
-    from similarity import Similarity
-    ttmatrix = Similarity.calculateSimilarityMatrix(tfm)
-    
+
+    import similarity
+    ttmatrix = similarity.calculateSimilarityMatrix(tfm)
+
     g = Graph(ttmatrix)
-    
+
     pprint(g)
 
     print '### Cliques ###'
@@ -47,4 +49,3 @@ if __name__ == '__main__':
 #     'Term 6': ['Term 1', 'Term 2', 'Term 3', 'Term 4', 'Term 8'],
 #     'Term 7': [],
 #     'Term 8': ['Term 2', 'Term 6']}
-
