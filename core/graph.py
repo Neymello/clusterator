@@ -19,7 +19,46 @@ class Graph(object):
         self.nx_graph = nx.to_networkx_graph(self.graph)
 
     def cliques(self):
-        return nx.algorithms.clique.find_cliques(self.nx_graph)
+        return [c for c in nx.find_cliques(self.nx_graph)]
+
+
+    def single_link(self):
+        return [c for c in nx.connected_components(self.nx_graph)]
+
+    def star(self):
+        clusters = []
+        visited = []
+        for term in self.graph:
+            if term not in visited:
+                cluster = self.graph[term] + [term]
+                visited.extend(cluster)
+                clusters.append(cluster)
+        return clusters
+
+    def string(self):
+        from collections import deque
+
+        clusters = []
+        visited = []
+        for term in self.graph:
+            if term not in visited:
+                cluster = []
+                cur = term 
+                while cur:
+                    cluster.append(cur)
+                    visited.append(cur)
+                    neighbors = self.graph[cur]
+                    cur = None
+                    for neighbor in neighbors:
+                        if neighbor not in visited:
+                            cur = neighbor
+
+                clusters.append(cluster)
+
+        return clusters
+
+
+
 
 
 if __name__ == '__main__':
@@ -41,6 +80,15 @@ if __name__ == '__main__':
 
     print '### Cliques ###'
     pprint(g.cliques())
+
+    print '### Single-Link ###'
+    pprint(g.single_link())
+
+    print '### Star ###'
+    pprint(g.star())
+
+    print '### String ###'
+    pprint(g.string())
 #    {'Term 1': ['Term 3', 'Term 4', 'Term 5', 'Term 6'],
 #     'Term 2': ['Term 4', 'Term 6', 'Term 8'],
 #     'Term 3': ['Term 1', 'Term 4', 'Term 6'],
