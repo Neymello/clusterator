@@ -34,6 +34,15 @@ if __name__ == '__main__':
     print "Longest word:", biggest_word
     print "shortest word:", smallest_word
 
+
+    word_count = {}
+    for word in unique_words:
+        word_count[word] = all_words.count(word)
+    import operator
+    sorted_word_count = sorted(word_count.iteritems(), key=operator.itemgetter(1))
+    pprint(sorted_word_count )
+    
+
     histogram_data = []
     for word in unique_words:
         histogram_data.append(all_words.count(word))
@@ -59,3 +68,5 @@ if __name__ == '__main__':
     plt.ylabel("Frequency")
     plt.title("Histogram")
     plt.show()  
+    
+    
