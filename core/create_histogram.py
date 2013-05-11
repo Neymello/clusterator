@@ -7,6 +7,8 @@ from pprint import pprint
 
 if __name__ == '__main__':
     docs = util.getFileContent("../examples/TEST.DAT")
+    
+    print len(docs.keys())
 
     # stores all words of all documents, with repetitions
     all_words = []
@@ -42,3 +44,18 @@ if __name__ == '__main__':
     frequencies.sort()  # sets are not always ordered
     for freq in frequencies:
         print "there are %d words that appear %d times" % (histogram_data.count(freq), freq)
+        
+    import matplotlib.pyplot as plt
+    import numpy as np 
+    
+    hist, bin_edges = np.histogram(histogram_data, bins = range(len(frequencies)))
+    
+    plt.bar(bin_edges[:-1], hist, width = 1)
+    xmin = min(bin_edges)
+    if(xmin==0):
+        xmin = 1
+    plt.xlim(xmin, max(bin_edges))
+    plt.xlabel("Occurrence")
+    plt.ylabel("Frequency")
+    plt.title("Histogram")
+    plt.show()  
