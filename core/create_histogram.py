@@ -51,7 +51,10 @@ if __name__ == '__main__':
     hist, bin_edges = np.histogram(histogram_data, bins = range(len(frequencies)))
     
     plt.bar(bin_edges[:-1], hist, width = 1)
-    plt.xlim(min(bin_edges), max(bin_edges))
+    xmin = min(bin_edges)
+    if(xmin==0):
+        xmin = 1
+    plt.xlim(xmin, max(bin_edges))
     plt.xlabel("Occurrence")
     plt.ylabel("Frequency")
     plt.title("Histogram")
