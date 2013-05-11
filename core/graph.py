@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 class Graph(object):
     def __init__(self, term_term_matrix, threshold=10):
         self.graph = {}
+
         for term_a in term_term_matrix:
             for term_b in term_term_matrix:
                 if (term_term_matrix[term_a][term_b] >= threshold):
@@ -17,6 +18,7 @@ class Graph(object):
                 self.graph[term_a] = []
 
         self.nx_graph = nx.to_networkx_graph(self.graph)
+
 
     def cliques(self):
         return [c for c in nx.find_cliques(self.nx_graph)]
@@ -43,7 +45,7 @@ class Graph(object):
         for term in self.graph:
             if term not in visited:
                 cluster = []
-                cur = term 
+                cur = term
                 while cur:
                     cluster.append(cur)
                     visited.append(cur)
