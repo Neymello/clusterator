@@ -1,6 +1,6 @@
 from pprint import pprint
 import networkx as nx
-import matplotlib.pyplot plt
+import matplotlib.pyplot as plt
 
 
 class Graph(object):
